@@ -53,7 +53,8 @@ describe("Gilded Rose", () => {
         createItem("Backstage passes to a TAFKAL80ETC concert", 15, 25),
         createItem("Backstage passes to a TAFKAL80ETC concert", 10, 25),
         createItem("Backstage passes to a TAFKAL80ETC concert", 5, 25),
-        createItem("Backstage passes to a TAFKAL80ETC concert", 0, 25)
+        createItem("Backstage passes to a TAFKAL80ETC concert", 0, 25),
+        createItem("Backstage passes to a TAFKAL80ETC concert", 3, 50)
       ]
 
       updateQuality(items)
@@ -72,6 +73,24 @@ describe("Gilded Rose", () => {
 
       it("should reduce quality to 0 when sell_in is equal to 0 days", () => {
         expect(items[3].quality).toEqual(0)
+      })
+
+      it("should not increase quality above 50", () => {
+        expect(items[4].quality).toEqual(50)
+      })
+    })
+
+    describe("Sulfuras, Hand of Ragnaros", () => {
+      const items = [ createItem("Sulfuras, Hand of Ragnaros", 15, 80) ]
+
+      updateQuality(items)
+
+      it("should not change in quality", () => {
+        expect(items[0].quality).toEqual(80)
+      })
+
+      it("should not change in sell_in days", () => {
+        expect(items[0].sell_in).toEqual(15)
       })
     })
   })
