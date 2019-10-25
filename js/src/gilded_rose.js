@@ -9,6 +9,7 @@ function Item(name, sell_in, quality) {
 class GildedRose {
 
   static BACKSTAGE_PASS = 'Backstage passes to a TAFKAL80ETC concert'
+  static CONJURED_CAKE = 'Conjured Mana Cake'
   static AGED_BRIE = 'Aged Brie'
   static SULFURAS = 'Sulfuras, Hand of Ragnaros'
   static MAX_QUALITY = 50
@@ -33,7 +34,7 @@ class GildedRose {
   static updateQuality(items) {
 
     // static vars
-    const { checkQuality, BACKSTAGE_PASS, AGED_BRIE, SULFURAS } = GildedRose
+    const { checkQuality, BACKSTAGE_PASS, AGED_BRIE, SULFURAS, CONJURED_CAKE } = GildedRose
 
     for (let i = 0, itemLen = items.length; i < itemLen; i ++) {
       const item = items[i]
@@ -56,10 +57,12 @@ class GildedRose {
       } else if (item.name === AGED_BRIE) {
         qualityIncrement = 1
       } else {
+        const qualityMultiplier = item.name === CONJURED_CAKE ? 2 : 1
+        
         if (item.sell_in < 0) {
-          qualityIncrement = -2
+          qualityIncrement = -2 * qualityMultiplier
         } else {
-          qualityIncrement = -1
+          qualityIncrement = -1 * qualityMultiplier
         }
       }
 

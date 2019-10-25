@@ -93,5 +93,22 @@ describe("Gilded Rose", () => {
         expect(items[0].sell_in).toEqual(15)
       })
     })
+
+    describe("Conjured Mana Cake", () => {
+      const items = [
+        createItem("Conjured Mana Cake", 15, 20),
+        createItem("Conjured Mana Cake", -1, 10)
+      ]
+
+      updateQuality(items)
+
+      it("should reduce in quality by 2 when sell_in days greater or equal to 0", () => {
+        expect(items[0].quality).toEqual(18)
+      })
+
+      it("should reduce in quality by 4 when sell_in days less than 0", () => {
+        expect(items[1].quality).toEqual(6)
+      })
+    })
   })
 })
