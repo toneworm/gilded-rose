@@ -44,7 +44,6 @@ class GildedRose {
       }
 
       let qualityIncrement
-      let sellInIncrement
 
       if (item.name === BACKSTAGE_PASS) {
         if (item.sell_in > 0 && item.sell_in <= 5) {
@@ -66,17 +65,13 @@ class GildedRose {
         }
       }
 
-      if (!sellInIncrement) {
-        sellInIncrement = -1
-      }
-
       if (!qualityIncrement) {
         item.quality = 0
       } else {
         let newQuality = item.quality + qualityIncrement       
 
         item.quality = checkQuality(newQuality)
-        item.sell_in += sellInIncrement          
+        item.sell_in -= 1
       } 
     }
 
