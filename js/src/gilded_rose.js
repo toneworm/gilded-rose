@@ -5,7 +5,7 @@ function Item(name, sell_in, quality) {
   this.quality = quality;
 }
 
-// Item class creator / updateQuality static methods
+// Class with static methods for handling items
 class GildedRose {
 
   static BACKSTAGE_PASS = 'Backstage passes to a TAFKAL80ETC concert'
