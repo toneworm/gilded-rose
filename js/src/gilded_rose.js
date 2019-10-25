@@ -22,13 +22,7 @@ class GildedRose {
   static checkQuality(newQuality) {
     const { MAX_QUALITY, MIN_QUALITY } = GildedRose
 
-    if (newQuality > MAX_QUALITY) {
-      return MAX_QUALITY
-    } else if (newQuality < MIN_QUALITY) {
-      return MIN_QUALITY
-    }
-
-    return newQuality
+    return Math.min(Math.max(newQuality, MIN_QUALITY), MAX_QUALITY)
   }
 
   static updateQuality(items) {
